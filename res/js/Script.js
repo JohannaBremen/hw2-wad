@@ -13,7 +13,7 @@ $(function (){
         new Course("Python 101", 1, 98),
     ];
 
-    //init();  <-- see rida on välja kommenteeritud, sest init funktsiooni pole veel
+    init(); 
     //tab changes
     $('#courses-button').click(function(event) {
         $("#courses-container").attr("class", "tab active");
@@ -29,8 +29,26 @@ $(function (){
     })
 
     function init() {
-        //siia tuleb üks kena funktsioon, mille sisu ma absoluutselt ei mõista
-        
+        //filling table with data from courses array
+        let tbody = $("<tbody></tbody>");
+        for(let i = 0; i<courses.length; i++){
+            let tr = $("<tr></tr>");
+            let td_id = $("<td></td>").text(i+1);
+            let td_title = $("<td></td>").text(courses[i].title);
+            let td_semester = $("<td></td>").text(courses[i].semester);
+            let td_grade = $("<td></td>").text(courses[i].grade);
+            
+            //adding to row
+            tr.append(td_id);
+            tr.append(td_title);
+            tr.append(td_semester);
+            tr.append(td_grade);
+            //rows to tbody
+            tbody.append(tr);
+
+        }
+        //replacing tbody
+        $('#courses tbody').replaceWith(tbody);
     }
 
     function GPAcalc() {
