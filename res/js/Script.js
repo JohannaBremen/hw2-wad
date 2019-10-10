@@ -13,25 +13,23 @@ $(function (){
         new Course("Python 101", 1, 98),
     ];
 
-    $('.courses-button').click(function(event) {
-        let id = $(event.target).attr('id');
-        if(id = "courses-container"){
-            $(event.target)
-                .removeClass("tab")
-                .addClass("tab active");
+    //init();
 
-        }
-        else{
-            $(event.target)
-                .removeClass("tab")
-                .addClass("tab active");
-
-        }
-
-    })
+    //väga poolik task 3 algus, sest enne on vaja init funktsiooni
+    $('#courses-button').click(function(event) {
+        //console.log("Yeetus");
+        $("#courses-container").attr("class", "tab active");
+        $("#profile-container").attr("class", "tab");
+    });
+    $('#profile-button').click(function(event) {
+        //console.log("Yeetus");
+        $("#profile-container").attr("class", "tab active");
+        $("#courses-container").attr("class", "tab");
+    });
 
     function init() {
         //siia tuleb üks kena funktsioon, mille sisu ma absoluutselt ei mõista
+        
     }
 
     function GPAcalc() {
