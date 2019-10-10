@@ -13,7 +13,7 @@ $(function (){
         new Course("Python 101", 1, 98),
     ];
 
-    //init();
+    //init();  <-- see rida on välja kommenteeritud, sest init funktsiooni pole veel
     //tab changes
     $('#courses-button').click(function(event) {
         $("#courses-container").attr("class", "tab active");
@@ -23,6 +23,10 @@ $(function (){
         $("#profile-container").attr("class", "tab active");
         $("#courses-container").attr("class", "tab");
     });
+    // add course button toggle here (✿◠‿◠)
+    $('#add-course-button').click(function(event) {
+        $("#add-course").toggle();
+    })
 
     function init() {
         //siia tuleb üks kena funktsioon, mille sisu ma absoluutselt ei mõista
