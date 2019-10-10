@@ -50,11 +50,11 @@ $(function (){
         //replacing tbody
         $('#courses tbody').replaceWith(tbody);
     }
-
+    //no testing yet!!!!!! could be bröken ¯\_(ツ)_/¯
     function GPAcalc() {
-        let grade = courses.grade;
         var points = 0;
         for(var i = 0; i < courses.length; i++){
+            let grade = courses[i].grade;
             if(grade > 90){
                 points += 4;
             }
