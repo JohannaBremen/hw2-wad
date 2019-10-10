@@ -14,15 +14,12 @@ $(function (){
     ];
 
     //init();
-
-    //väga poolik task 3 algus, sest enne on vaja init funktsiooni
+    //tab changes
     $('#courses-button').click(function(event) {
-        //console.log("Yeetus");
         $("#courses-container").attr("class", "tab active");
         $("#profile-container").attr("class", "tab");
     });
     $('#profile-button').click(function(event) {
-        //console.log("Yeetus");
         $("#profile-container").attr("class", "tab active");
         $("#courses-container").attr("class", "tab");
     });
