@@ -16,20 +16,30 @@ $(function (){
     init(); 
     //tab changes
     $('#courses-button').click(function(event) {
-        $('gpa').replaceWith(GPAcalc());
         $("#courses-container").attr("class", "tab active");
+        $('gpa').replaceWith(GPAcalc());
         $("#profile-container").attr("class", "tab");
     });
     $('#profile-button').click(function(event) {
-        $('gpa').replaceWith(GPAcalc());
         $("#profile-container").attr("class", "tab active");
+        $('gpa').replaceWith(GPAcalc());
         $("#courses-container").attr("class", "tab");
     });
     // add course button toggle here (✿◠‿◠)
     $('#add-course-button').click(function(event) {
         $("#add-course").toggle();
     })
+    $(function(){
+        $("#save-course").on("click", function () {
+            return $('#title').val(''), $('#semester').val(''), $('#grade').val('');
+        });
+        $("#cancel-course").on("click", function () {
+            $('#add-course-button').click();
+            return $('#title').val(''), $('#semester').val(''), $('#grade').val('');
 
+        });
+
+    });
     function init() {
         //filling table with data from courses array
         let tbody = $("<tbody></tbody>");
@@ -60,7 +70,9 @@ $(function (){
                 tbody.append(markup);
                 $('#courses tbody').replaceWith(tbody);
                 $('#add-course-button').click();
-                courses.addClass(new Course(course,semester,grade));
+                courses[courses.length] = (new Course(course,semester,grade));
+                $('gpa').replaceWith(GPAcalc());
+
 
             })
         })
