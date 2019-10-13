@@ -61,7 +61,7 @@ $(function (){
                 $('#courses tbody').replaceWith(tbody);
                 $('#add-course-button').click();
                 courses.addClass(new Course(course,semester,grade));
-                
+
             })
         })
 
