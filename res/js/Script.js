@@ -16,10 +16,12 @@ $(function (){
     init(); 
     //tab changes
     $('#courses-button').click(function(event) {
+        $('gpa').replaceWith(GPAcalc());
         $("#courses-container").attr("class", "tab active");
         $("#profile-container").attr("class", "tab");
     });
     $('#profile-button').click(function(event) {
+        $('gpa').replaceWith(GPAcalc());
         $("#profile-container").attr("class", "tab active");
         $("#courses-container").attr("class", "tab");
     });
@@ -37,7 +39,7 @@ $(function (){
             let td_title = $("<td></td>").text(courses[i].title);
             let td_semester = $("<td></td>").text(courses[i].semester);
             let td_grade = $("<td></td>").text(courses[i].grade);
-            
+
             //adding to row
             tr.append(td_id);
             tr.append(td_title);
@@ -46,11 +48,24 @@ $(function (){
             //rows to tbody
             tbody.append(tr);
 
-        }
-        //replacing tbody
-        $('#courses tbody').replaceWith(tbody);
+        } //ADDING TO TABLE THE VALUES
+        $(document).ready(function(){
+            $("#save-course").click(function(){
+                var course = $("#title").val();
+                var semester = $("#semester").val();
+                var grade = $("#grade").val();
+                //var rowCount = $('#tab >tbody >tr').length;
+                var rowCount=$('#courses tbody tr').length + 1;
+                markup = "<tr><td>"+rowCount+"</td><td>"+course+"</td><td>"+semester+"</td><td>"+grade+"</td></tr>";
+                tbody.append(markup);
+                $('#courses tbody').replaceWith(tbody);
+                $('#add-course-button').click();
+                courses.addClass(new Course(course,semester,grade));
+                
+            })
+        })
+
     }
-    //no testing yet!!!!!! could be bröken ¯\_(ツ)_/¯
     function GPAcalc() {
         var points = 0;
         for(var i = 0; i < courses.length; i++){
@@ -58,16 +73,16 @@ $(function (){
             if(grade > 90){
                 points += 4;
             }
-            if(grade > 80){
+            if(grade > 80 & grade < 91){
                 points += 3;
             }
-            if(grade > 70){
+            if(grade > 70 & grade <81){
                 points += 2;
             }
-            if(grade > 60){
-                points += 4;
+            if(grade > 60 & grade < 71){
+                points += 1;
             }
-            if(grade > 50){
+            if(grade > 50 & grade < 61){
                 points += 0.5;
             }
             if(grade <= 50){
@@ -77,4 +92,6 @@ $(function (){
         return points/courses.length;
 
     }
+    $('gpa').replaceWith(GPAcalc());
+
 });
