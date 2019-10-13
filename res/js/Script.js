@@ -4,7 +4,7 @@ $(function (){
         "Doe", 
         "11/10/1990", 
         "Software Engineering", 
-        2.75
+        3.25
     );
     var courses = [
         new Course("Sissejuhatus teoreetilisse kokandusse", 1, 97),
@@ -17,12 +17,12 @@ $(function (){
     //tab changes
     $('#courses-button').click(function(event) {
         $("#courses-container").attr("class", "tab active");
-        $('gpa').replaceWith(GPAcalc());
+        $('#gpa').html('<strong>' + GPAcalc() + '</strong>');
         $("#profile-container").attr("class", "tab");
     });
     $('#profile-button').click(function(event) {
         $("#profile-container").attr("class", "tab active");
-        $('gpa').replaceWith(GPAcalc());
+        $('#gpa').html('<strong>' + GPAcalc() + '</strong>');
         $("#courses-container").attr("class", "tab");
     });
     // add course button toggle here (✿◠‿◠)
@@ -71,7 +71,7 @@ $(function (){
                 $('#courses tbody').replaceWith(tbody);
                 $('#add-course-button').click();
                 courses[courses.length] = (new Course(course,semester,grade));
-                $('gpa').replaceWith(GPAcalc());
+                $('#gpa').html('<strong>' + GPAcalc() + '</strong>');
 
 
             })
@@ -101,9 +101,9 @@ $(function (){
                 points += 0;
             }
         }
-        return points/courses.length;
+        return (points/courses.length).toFixed(2);
 
     }
-    $('gpa').replaceWith(GPAcalc());
+    $('#gpa').html('<strong>' + GPAcalc() + '</strong>');
 
 });
